@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('me',function(){
+    return [
+        'NIS' => 3103120180,
+        'Nama' => 'Rafi Amrullah Al-Baihaqi Gunawan',
+        'Phone' => '083193557360',
+        'Class' => 'XII RPL 6'
+    ];
 });
