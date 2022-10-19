@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\BookController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,11 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('me',function(){
-    return [
-        'NIS' => 3103120180,
-        'Nama' => 'Rafi Amrullah Al-Baihaqi Gunawan',
-        'Phone' => '083193557360',
-        'Class' => 'XII RPL 6'
-    ];
-});
+Route::get('me',[AuthController::class, 'me']
+);
+
+Route::resource('book', BookController::class)->except(
+    ['create', 'edit']
+);
